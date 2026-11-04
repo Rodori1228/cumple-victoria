@@ -885,9 +885,13 @@
   <!-- REPRODUCTOR DE MÚSICA -->
   <audio id="background-music"></audio>
 
+  <!-- REPRODUCTOR COMPLETO -->
   <div id="music-player" class="music-player">
     <div class="music-info">
-      <span class="music-note">♫</span>
+      <button id="music-collapse" class="music-note" type="button" aria-label="Minimizar reproductor"
+        aria-expanded="true">
+        ♫
+      </button>
       <div class="music-details">
         <span class="music-label">REPRODUCIENDO AHORA</span>
         <span id="song-title">Canción 1</span>
@@ -910,6 +914,7 @@
       <span>♪</span>
       <input id="music-volume" type="range" min="0" max="1" step="0.05" value="0.3">
     </div>
+
   </div>
 
   <!-- JAVASCRIPT: APERTURA DEL REGALO Y CONTROL DE MÚSICA -->
@@ -926,6 +931,9 @@
     const currentTimeText = document.querySelector("#music-current-time");
     const durationText = document.querySelector("#music-duration");
     const volumeBar = document.querySelector("#music-volume");
+
+    const musicPlayer = document.querySelector("#music-player");
+    const collapseButton = document.querySelector("#music-collapse");
 
     // LISTA DE CANCIONES
     const playlist = [
@@ -987,6 +995,17 @@
       loadSong(currentSong + 1);
       playMusic();
     }
+
+    // Minimizar y expandir usando la misma nota musical
+    collapseButton.addEventListener("click", () => {
+      const isMinimized = musicPlayer.classList.toggle("minimized");
+
+      collapseButton.setAttribute("aria-expanded", String(!isMinimized));
+      collapseButton.setAttribute(
+        "aria-label",
+        isMinimized ? "Abrir reproductor" : "Minimizar reproductor"
+      );
+    });
 
     // Abrir el regalo
     openGiftButton.addEventListener("click", () => {

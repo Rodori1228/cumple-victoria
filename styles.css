@@ -896,10 +896,14 @@ body.gift-opened #site-content {
     height: 42px;
     display: grid;
     place-items: center;
+    padding: 0;
+    border: 0;
     border-radius: 50%;
     background: #ffe5ee;
     color: var(--rose);
     font-size: 1.5rem;
+    cursor: pointer;
+    flex-shrink: 0;
 }
 
 .music-details {
@@ -1126,5 +1130,53 @@ body.gift-opened #site-content {
         object-position: center center !important;
         transform: scale(1) !important;
 
+    }
+}
+
+/* La nota musical existente también sirve para minimizar y abrir el reproductor. */
+.music-player.minimized {
+    width: auto;
+    padding: 0;
+    background: transparent;
+    border: 0;
+    box-shadow: none;
+}
+
+.music-player.minimized .music-details,
+.music-player.minimized .music-controls,
+.music-player.minimized .music-progress,
+.music-player.minimized .music-volume {
+    display: none;
+}
+
+.music-player.minimized .music-info {
+    margin: 0;
+}
+
+.music-player.minimized .music-note {
+    position: fixed;
+    right: 25px;
+    bottom: 25px;
+    width: 55px;
+    height: 55px;
+    border-radius: 50%;
+    background: #ffe5ed;
+    color: #c34d79;
+    font-size: 27px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.12);
+    z-index: 101;
+    transition: transform 0.2s;
+}
+
+.music-player.minimized .music-note:hover {
+    transform: scale(1.1);
+}
+
+@media screen and (max-width: 650px) {
+    .music-player.minimized .music-note {
+        right: 18px;
+        bottom: 18px;
+        width: 48px;
+        height: 48px;
     }
 }
