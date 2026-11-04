@@ -1037,7 +1037,8 @@ body.gift-opened #site-content {
 /* AJUSTE MANUAL DEL ZOOM EN MÓVILES */
 @media screen and (max-width: 650px) {
     #site-content .photo-card img {
-        object-fit: scale-down !important;
+        aspect-ratio: 3/4 !important;
+        object-fit: cover !important;
         object-position: center center !important;
         transform: scale(1) !important;
 
