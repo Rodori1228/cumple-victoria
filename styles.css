@@ -1039,7 +1039,7 @@ body.gift-opened #site-content {
     #site-content .photo-card img {
         object-fit: cover !important;
         object-position: center center !important;
-        transform: scale(0.8) !important;
+        transform: scale(0.5) !important;
 
     }
 }
