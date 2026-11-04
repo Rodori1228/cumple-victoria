@@ -967,6 +967,13 @@ body.gift-opened #site-content {
         min-width: 0;
     }
 
+    .photo-card img {
+        display: block;
+        width: 100%;
+        aspect-ratio: 4 / 3;
+        object-fit: cover;
+    }
+
     .photo-caption {
         padding: 12px;
         font-size: 1rem;
@@ -1024,21 +1031,5 @@ body.gift-opened #site-content {
     main {
         padding-left: 13px;
         padding-right: 13px;
-    }
-}
-
-/* UNA FOTO POR FILA EN MÓVILES, CONSERVANDO EL ASPECTO DE PC */
-@media screen and (max-width: 650px) {
-    #site-content .grid {
-        display: grid !important;
-        grid-template-columns: minmax(0, 1fr) !important;
-        width: 100% !important;
-        gap: 20px;
-    }
-
-    #site-content .grid .photo-card {
-        width: 100% !important;
-        max-width: 100% !important;
-        grid-column: 1 / -1 !important;
     }
 }
