@@ -1,0 +1,911 @@
+:root {
+    --pink: #ff8fb1;
+    --pink2: #ffd3e1;
+    --rose: #b94f78;
+    --cream: #fffaf3;
+    --lav: #e8ddff;
+    --ink: #594653;
+    --muted: #8d7885;
+    --white: #fff;
+    --shadow: 0 16px 45px rgba(185, 79, 120, .12);
+}
+
+* {
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    margin: 0;
+    background: var(--cream);
+    color: var(--ink);
+    font-family: "Trebuchet MS", system-ui, sans-serif;
+    overflow-x: hidden;
+}
+
+button,
+a {
+    font: inherit;
+}
+
+a {
+    color: inherit;
+}
+
+
+
+.hero {
+    min-height: 100svh;
+    display: grid;
+    place-items: center;
+    text-align: center;
+    padding: 36px 20px;
+    position: relative;
+    overflow: hidden;
+    background: radial-gradient(circle at 15% 20%, #fff 0 4%, transparent 5%), linear-gradient(145deg, #fff0f5, #fce7f0 48%, #f0e9ff);
+}
+
+.hero:before,
+.hero:after {
+    content: "";
+    position: absolute;
+    border-radius: 50%;
+    background: #fff8;
+    filter: blur(1px);
+}
+
+.hero:before {
+    width: 300px;
+    height: 300px;
+    left: -120px;
+    bottom: -90px;
+}
+
+.hero:after {
+    width: 260px;
+    height: 260px;
+    right: -100px;
+    top: -80px;
+}
+
+.float {
+    position: absolute;
+    font-size: clamp(20px, 4vw, 38px);
+    opacity: .75;
+    animation: float 5s ease-in-out infinite;
+}
+
+.f1 {
+    top: 13%;
+    left: 12%;
+}
+
+.f2 {
+    top: 23%;
+    right: 13%;
+    animation-delay: 1s;
+}
+
+.f3 {
+    bottom: 18%;
+    left: 18%;
+    animation-delay: 2s;
+}
+
+.f4 {
+    bottom: 14%;
+    right: 17%;
+    animation-delay: .5s;
+}
+
+@keyframes float {
+    50% {
+        transform: translateY(-15px) rotate(8deg);
+    }
+}
+
+.hero-inner {
+    position: relative;
+    z-index: 1;
+    max-width: 760px;
+}
+
+.eyebrow {
+    display: inline-block;
+    background: #fff9;
+    border: 1px solid #fff;
+    padding: 9px 16px;
+    border-radius: 99px;
+    color: var(--rose);
+    font-size: .88rem;
+    letter-spacing: .04em;
+}
+
+h1 {
+    font-family: Georgia, serif;
+    font-size: clamp(3.1rem, 10vw, 6.8rem);
+    line-height: .98;
+    margin: 24px 0 16px;
+    color: #bd5d83;
+    font-weight: normal;
+}
+
+h1 span {
+    display: block;
+    font-style: italic;
+    color: #e78cab;
+}
+
+.hero p {
+    font-size: clamp(1rem, 2.5vw, 1.25rem);
+    line-height: 1.7;
+    color: #806879;
+    max-width: 570px;
+    margin: 0 auto 28px;
+}
+
+.btn {
+    border: 0;
+    border-radius: 999px;
+    padding: 14px 23px;
+    background: var(--rose);
+    color: white;
+    cursor: pointer;
+    box-shadow: 0 9px 22px #b94f7833;
+    transition: .2s;
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+    gap: 9px;
+}
+
+.btn:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 13px 25px #b94f7844;
+}
+
+
+
+main {
+    max-width: 1050px;
+    margin: auto;
+    padding: 20px 22px 80px;
+}
+
+section {
+    padding: 74px 0 20px;
+    scroll-margin-top: 25px;
+}
+
+.section-head {
+    text-align: center;
+    margin: 0 auto 32px;
+    max-width: 650px;
+}
+
+.kicker {
+    text-transform: uppercase;
+    letter-spacing: .16em;
+    color: #c47796;
+    font-size: .75rem;
+    font-weight: bold;
+}
+
+h2 {
+    font: normal clamp(2rem, 5vw, 3.2rem) Georgia, serif;
+    color: #a94f76;
+    margin: 10px 0;
+}
+
+.section-head p {
+    color: var(--muted);
+    line-height: 1.7;
+    margin: 0;
+}
+
+.card {
+    background: #fff;
+    border: 1px solid #f6dce6;
+    border-radius: 25px;
+    box-shadow: var(--shadow);
+    padding: 24px;
+}
+
+.intro-card {
+    text-align: center;
+    max-width: 760px;
+    margin: auto;
+    background: linear-gradient(135deg, #fff, #fff4f8);
+}
+
+.intro-card .big-heart {
+    font-size: 2.4rem;
+}
+
+.intro-card p {
+    line-height: 1.85;
+    color: #786574;
+    font-size: 1.04rem;
+}
+
+
+
+.grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 17px;
+}
+
+.photo-card {
+    background: white;
+    border: 1px solid #f5dce5;
+    border-radius: 20px;
+    overflow: hidden;
+    box-shadow: var(--shadow);
+}
+
+.photo-placeholder {
+    aspect-ratio: 4/5;
+    background: linear-gradient(145deg, #ffe5ee, #eee5ff);
+    display: grid;
+    place-items: center;
+    text-align: center;
+    padding: 15px;
+    color: #a55c7b;
+}
+
+.photo-placeholder b {
+    display: block;
+    font-size: 2rem;
+    margin-bottom: 8px;
+}
+
+.photo-card img {
+    width: 100%;
+    aspect-ratio: 4/5;
+    object-fit: cover;
+    display: block;
+}
+
+.photo-caption {
+    padding: 12px 14px;
+    font-size: .92rem;
+    color: #806879;
+}
+
+
+
+.favorites {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 18px;
+}
+
+.favorite {
+    background: linear-gradient(140deg, #fff, #fff4f8);
+    border: 1px solid #f5dce5;
+    border-radius: 23px;
+    padding: 23px;
+}
+
+.favorite h3 {
+    font: normal 1.55rem Georgia, serif;
+    color: #ae5a7e;
+    margin: 0 0 8px;
+}
+
+.favorite .emoji {
+    font-size: 2rem;
+}
+
+.favorite p {
+    color: var(--muted);
+    line-height: 1.65;
+    margin-bottom: 0;
+}
+
+.list {
+    list-style: none;
+    padding: 0;
+    margin: 15px 0 0;
+}
+
+.list li {
+    padding: 11px 0;
+    border-bottom: 1px dashed #f0cbd9;
+    color: #715e6c;
+}
+
+.list li:last-child {
+    border: 0;
+}
+
+
+
+/* Los estilos de recuerdos están definidos al final del archivo. */
+
+
+
+.letter-wrap {
+    max-width: 790px;
+    margin: auto;
+    background: #fff;
+    border: 1px solid #f1d6e1;
+    border-radius: 24px;
+    padding: clamp(24px, 6vw, 55px);
+    box-shadow: var(--shadow);
+    position: relative;
+}
+
+.letter-wrap:before {
+    content: "✿";
+    position: absolute;
+    right: 24px;
+    top: 15px;
+    color: #e7a1ba;
+    font-size: 2rem;
+}
+
+.letter {
+    font: 1.08rem/2 Georgia, serif;
+    color: #6e5968;
+    white-space: pre-line;
+}
+
+.signature {
+    font: italic 1.7rem Georgia, serif;
+    color: #bd6288;
+    margin-top: 28px;
+}
+
+
+
+.footer {
+    text-align: center;
+    padding: 55px 20px 35px;
+    color: #a17e90;
+}
+
+.footer .heart {
+    font-size: 1.8rem;
+    color: #d9789c;
+}
+
+.nav {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 9px;
+    padding: 14px 16px;
+    position: sticky;
+    top: 0;
+    z-index: 5;
+    background: #fffaf3eF;
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid #f5e1e8;
+}
+
+.nav a {
+    text-decoration: none;
+    font-size: .85rem;
+    color: #95657b;
+    padding: 8px 12px;
+    border-radius: 99px;
+}
+
+.nav a:hover {
+    background: #ffe7ef;
+}
+
+.note {
+    font-size: .85rem;
+    color: #a18493;
+    text-align: center;
+    margin: 18px 0 0;
+}
+
+
+
+body.gift-locked {
+    overflow: hidden;
+}
+
+/* Pantalla inicial */
+#gift-screen {
+    position: fixed;
+    inset: 0;
+    z-index: 1000;
+    display: grid;
+    place-items: center;
+    padding: 24px;
+    text-align: center;
+    overflow: hidden;
+    background:
+        radial-gradient(circle at 18% 18%, #fff 0 3px, transparent 4px),
+        radial-gradient(circle at 82% 28%, #fff9 0 5px, transparent 6px),
+        linear-gradient(145deg, #ffeaf2 0%, #f9e9ff 52%, #fff4e9 100%);
+    transition: opacity .75s ease, visibility .75s ease;
+}
+
+#gift-screen::before,
+#gift-screen::after {
+    content: "";
+    position: absolute;
+    border-radius: 50%;
+    background: #fff8;
+    filter: blur(2px);
+    pointer-events: none;
+}
+
+#gift-screen::before {
+    width: 330px;
+    height: 330px;
+    left: -130px;
+    bottom: -130px;
+}
+
+#gift-screen::after {
+    width: 290px;
+    height: 290px;
+    right: -110px;
+    top: -110px;
+}
+
+/* Contenido y textos */
+.gift-content {
+    position: relative;
+    z-index: 1;
+    width: min(100%, 480px);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 12px;
+}
+
+.gift-content .eyebrow {
+    color: var(--rose);
+    margin-bottom: 4px;
+}
+
+.gift-title {
+    font: normal clamp(2.2rem, 7vw, 3.6rem)/1.12 Georgia, serif;
+    color: #b95e83;
+    margin: 8px 0 0;
+}
+
+.gift-message {
+    color: #866c7c;
+    line-height: 1.6;
+    margin: 16px 0 2px;
+    max-width: 340px;
+}
+
+/* Caja: el dibujo está dentro de .gift-box, no dentro del botón */
+.gift-box {
+    position: relative;
+    isolation: isolate;
+    width: 210px;
+    height: 155px;
+    margin: 58px auto 8px;
+    border-radius: 7px 7px 16px 16px;
+    background: linear-gradient(105deg, #ff9cba 0%, #f477a0 58%, #e96f99 100%);
+    box-shadow:
+        0 18px 35px rgba(185, 79, 120, .22),
+        inset -9px 0 0 rgba(217, 95, 137, .22);
+    animation: giftWiggle 2.8s ease-in-out infinite;
+}
+
+/* Tapa */
+.gift-lid {
+    position: absolute;
+    z-index: 4;
+    left: -10px;
+    right: -10px;
+    top: -15px;
+    height: 27px;
+    border-radius: 8px;
+    background: linear-gradient(100deg, #ffc3d5, #ffabc6);
+    box-shadow: 0 5px 10px rgba(185, 79, 120, .16);
+    transform-origin: 12% 90%;
+    transition: transform .85s cubic-bezier(.2, .8, .2, 1);
+}
+
+/* Cinta vertical */
+.gift-ribbon {
+    position: absolute;
+    z-index: 2;
+    top: 0;
+    bottom: 0;
+    left: 50%;
+    width: 38px;
+    transform: translateX(-50%);
+    background: #fff0c9;
+    box-shadow: inset 5px 0 rgba(255, 255, 255, .35);
+}
+
+/* Cinta horizontal */
+.gift-front {
+    position: absolute;
+    z-index: 2;
+    left: 0;
+    right: 0;
+    top: 42%;
+    height: 22px;
+    background: #fff0c9;
+    box-shadow: 0 2px 5px rgba(185, 79, 120, .08);
+}
+
+/* La parte central del lazo y sus dos lazadas */
+.gift-bow {
+    position: absolute;
+    z-index: 5;
+    top: -48px;
+    left: 50%;
+    width: 24px;
+    height: 25px;
+    transform: translateX(-50%);
+    border-radius: 7px;
+    background: #fff0c9;
+}
+
+.gift-bow::before,
+.gift-bow::after {
+    content: "";
+    position: absolute;
+    top: -13px;
+    width: 43px;
+    height: 34px;
+    border: 8px solid #fff0c9;
+    background: transparent;
+    border-radius: 50% 50% 45% 45%;
+}
+
+.gift-bow::before {
+    right: 8px;
+    transform: rotate(25deg);
+}
+
+.gift-bow::after {
+    left: 8px;
+    transform: rotate(-25deg);
+}
+
+/* Botón para abrir el regalo */
+.gift-button {
+    position: relative;
+    z-index: 6;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: auto;
+    min-width: 0;
+    min-height: 0;
+    height: auto;
+    padding: 13px 28px;
+    margin-top: 8px;
+    border: 0;
+    border-radius: 999px;
+    background: var(--rose);
+    color: white;
+    font: inherit;
+    font-weight: 600;
+    cursor: pointer;
+    box-shadow: 0 9px 22px rgba(185, 79, 120, .20);
+    transition: transform .2s, background .2s, box-shadow .2s;
+}
+
+.gift-button:hover {
+    transform: translateY(-3px);
+    background: #a9436b;
+    box-shadow: 0 13px 25px rgba(185, 79, 120, .27);
+}
+
+.gift-button:focus-visible {
+    outline: 3px solid #b94f78;
+    outline-offset: 5px;
+}
+
+/* Destellos: los nombres coinciden con el HTML */
+.gift-sparkle {
+    position: absolute;
+    z-index: 1;
+    pointer-events: none;
+    font-size: clamp(20px, 4vw, 34px);
+    animation: sparkleFloat 3s ease-in-out infinite;
+}
+
+.sparkle-1 {
+    left: 5%;
+    top: 28%;
+    color: #d77b9e;
+}
+
+.sparkle-2 {
+    right: 5%;
+    top: 38%;
+    color: #aa8bd8;
+    animation-delay: .8s;
+}
+
+.sparkle-3 {
+    left: 12%;
+    bottom: 15%;
+    animation-delay: 1.4s;
+}
+
+/* Animaciones */
+@keyframes giftWiggle {
+
+    0%,
+    78%,
+    100% {
+        transform: rotate(0) translateY(0);
+    }
+
+    82% {
+        transform: rotate(-3deg) translateY(-3px);
+    }
+
+    86% {
+        transform: rotate(3deg) translateY(-2px);
+    }
+
+    90% {
+        transform: rotate(-2deg);
+    }
+
+    94% {
+        transform: rotate(2deg);
+    }
+}
+
+@keyframes sparkleFloat {
+    50% {
+        transform: translateY(-13px) rotate(12deg);
+    }
+}
+
+@keyframes boxPop {
+    50% {
+        transform: scale(1.08);
+    }
+
+    100% {
+        transform: scale(.96);
+        opacity: 0;
+    }
+}
+
+/* Apertura */
+body.gift-opening .gift-box {
+    animation: boxPop .65s ease .35s both;
+}
+
+body.gift-opening .gift-lid {
+    transform: translate(-18px, -75px) rotate(-28deg);
+}
+
+/* Transición al contenido */
+body.gift-opened #gift-screen {
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+}
+
+#site-content {
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity .9s ease;
+}
+
+body.gift-opened #site-content {
+    opacity: 1;
+    visibility: visible;
+}
+
+/* Adaptación a móviles */
+@media (max-width: 480px) {
+    #gift-screen {
+        padding: 18px;
+    }
+
+    .gift-title {
+        font-size: clamp(2rem, 9vw, 2.7rem);
+    }
+
+    .gift-box {
+        width: 190px;
+        height: 140px;
+        margin-top: 54px;
+    }
+
+    .gift-lid {
+        left: -8px;
+        right: -8px;
+    }
+
+    .sparkle-1 {
+        left: 0;
+    }
+
+    .sparkle-2 {
+        right: 0;
+    }
+}
+
+/* Respeta la preferencia de movimiento reducido */
+@media (prefers-reduced-motion: reduce) {
+
+    .gift-box,
+    .gift-sparkle {
+        animation: none;
+    }
+
+    #gift-screen,
+    #site-content,
+    .gift-lid {
+        transition: none;
+    }
+}
+
+/* RECOPILACIÓN DE RECUERDOS */
+
+/* Distribución en dos columnas independientes */
+
+.memories {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    align-items: start;
+    gap: 16px;
+}
+
+/* Cada columna organiza sus tarjetas por separado */
+
+.memory-column {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    min-width: 0;
+}
+
+/* Tarjetas */
+
+.memory {
+    width: 100%;
+    margin: 0;
+    padding: 18px;
+    box-sizing: border-box;
+    background: #fff;
+    border-radius: 20px;
+    border: 1px solid #f4dce5;
+    box-shadow: var(--shadow);
+    position: relative;
+}
+
+/* Corazón decorativo */
+
+.memory:before {
+    content: "♡";
+    position: absolute;
+    right: 17px;
+    top: 12px;
+    color: #e9a1ba;
+    font-size: 1.4rem;
+}
+
+/* Títulos */
+
+.memory h3 {
+    font: normal 1.25rem Georgia, serif;
+    color: #ad5d7f;
+    margin: 0 25px 9px 0;
+}
+
+/* Texto */
+
+.memory p {
+    margin: 0;
+    color: #806f7a;
+    line-height: 1.7;
+}
+
+/* Galería de imágenes */
+
+.memory-images {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 14px;
+    margin-top: 16px;
+}
+
+.memory-images img {
+    display: block;
+    width: 100%;
+    height: 190px;
+    object-fit: cover;
+    border-radius: 12px;
+}
+
+/* Una sola imagen: se adapta al ancho y conserva sus proporciones */
+
+.memory-images img:only-child {
+    grid-column: 1 / -1;
+    justify-self: center;
+    width: 100%;
+    height: auto;
+    max-width: 100%;
+    max-height: 480px;
+    object-fit: contain;
+    border-radius: 12px;
+}
+
+/* Adaptación a móviles */
+
+@media (max-width: 650px) {
+
+    .memories {
+        grid-template-columns: 1fr;
+        gap: 16px;
+    }
+
+    .memory-column {
+        gap: 16px;
+    }
+
+    /* Varias imágenes siguen siendo compactas */
+
+    .memory-images img:not(:only-child) {
+        height: 150px;
+    }
+
+    /* Imagen individual */
+
+    .memory-images img:only-child {
+        max-height: 420px;
+    }
+}
+
+/* Botón flotante de música */
+.music-button {
+    position: fixed;
+    right: 25px;
+    bottom: 25px;
+    z-index: 100;
+    width: 55px;
+    height: 55px;
+    border: none;
+    border-radius: 50%;
+    background: var(--rose);
+    color: white;
+    font-size: 1.8rem;
+    cursor: pointer;
+    box-shadow: 0 5px 18px rgba(185, 79, 120, .3);
+    transition: transform .2s, background .2s;
+}
+
+.music-button:hover {
+    transform: scale(1.1);
+    background: #a9436b;
+}
+
+.music-button.playing {
+    animation: musicPulse 2s ease-in-out infinite;
+}
+
+@keyframes musicPulse {
+    50% {
+        box-shadow: 0 5px 25px rgba(185, 79, 120, .55);
+    }
+}
+
+@media (max-width: 480px) {
+    .music-button {
+        width: 48px;
+        height: 48px;
+        right: 18px;
+        bottom: 18px;
+    }
+}
