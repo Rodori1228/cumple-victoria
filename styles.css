@@ -1042,12 +1042,3 @@ body.gift-opened #site-content {
         grid-column: 1 / -1 !important;
     }
 }
-
-/* MOSTRAR LAS FOTOS COMPLETAS, SIN RECORTES */
-#site-content .photo-card img {
-    width: 100% !important;
-    height: auto !important;
-    aspect-ratio: auto !important;
-    object-fit: contain !important;
-    display: block;
-}
