@@ -883,31 +883,117 @@
   </div>
 
   <!-- REPRODUCTOR DE MÚSICA -->
-  <audio id="background-music" loop>
-    <source src="music/Vic.mp3" type="audio/mpeg">
-  </audio>
+  <audio id="background-music"></audio>
 
-  <!-- BOTÓN FLOTANTE DE MÚSICA -->
-  <button id="music-toggle" class="music-button" aria-label="Pausar música">
-    ♫
-  </button>
+  <div id="music-player" class="music-player">
+    <div class="music-info">
+      <span class="music-note">♫</span>
+      <div class="music-details">
+        <span class="music-label">REPRODUCIENDO AHORA</span>
+        <span id="song-title">Canción 1</span>
+      </div>
+    </div>
+
+    <div class="music-controls">
+      <button id="music-prev" aria-label="Canción anterior">⏮</button>
+      <button id="music-toggle" aria-label="Pausar música">Ⅱ</button>
+      <button id="music-next" aria-label="Siguiente canción">⏭</button>
+    </div>
+
+    <div class="music-progress">
+      <span id="music-current-time">0:00</span>
+      <input id="music-seek" type="range" min="0" max="100" value="0">
+      <span id="music-duration">0:00</span>
+    </div>
+
+    <div class="music-volume">
+      <span>♪</span>
+      <input id="music-volume" type="range" min="0" max="1" step="0.05" value="0.3">
+    </div>
+  </div>
 
   <!-- JAVASCRIPT: APERTURA DEL REGALO Y CONTROL DE MÚSICA -->
   <script>
     const openGiftButton = document.querySelector("#open-gift");
     const music = document.querySelector("#background-music");
+
     const musicButton = document.querySelector("#music-toggle");
+    const prevButton = document.querySelector("#music-prev");
+    const nextButton = document.querySelector("#music-next");
+
+    const songTitle = document.querySelector("#song-title");
+    const seekBar = document.querySelector("#music-seek");
+    const currentTimeText = document.querySelector("#music-current-time");
+    const durationText = document.querySelector("#music-duration");
+    const volumeBar = document.querySelector("#music-volume");
+
+    // LISTA DE CANCIONES
+    const playlist = [
+      {
+        title: "This side of paradise",
+        src: "music/Vic.mp3"
+      },
+      {
+        title: "Canción 2",
+        src: "music/cancion2.mp3"
+      },
+      {
+        title: "Canción 3",
+        src: "music/cancion3.mp3"
+      }
+    ];
+
+    let currentSong = 0;
 
     music.volume = 0.3;
+
+    // Formato de tiempo: minutos y segundos
+    function formatTime(seconds) {
+      if (!Number.isFinite(seconds)) return "0:00";
+
+      const minutes = Math.floor(seconds / 60);
+      const secs = Math.floor(seconds % 60);
+
+      return minutes + ":" + String(secs).padStart(2, "0");
+    }
+
+    // Cargar una canción
+    function loadSong(index) {
+      currentSong = (index + playlist.length) % playlist.length;
+
+      music.src = playlist[currentSong].src;
+      songTitle.textContent = playlist[currentSong].title;
+
+      seekBar.value = 0;
+      currentTimeText.textContent = "0:00";
+      durationText.textContent = "0:00";
+    }
+
+    // Reproducir
+    function playMusic() {
+      music.play().catch(error => {
+        console.log("No se pudo reproducir la música:", error);
+      });
+    }
+
+    // Canción anterior
+    function previousSong() {
+      loadSong(currentSong - 1);
+      playMusic();
+    }
+
+    // Siguiente canción
+    function nextSong() {
+      loadSong(currentSong + 1);
+      playMusic();
+    }
 
     // Abrir el regalo
     openGiftButton.addEventListener("click", () => {
       document.body.classList.add("gift-opening");
 
-      // Iniciar la música
-      music.play().catch(error => {
-        console.log("No se pudo reproducir la música:", error);
-      });
+      loadSong(0);
+      playMusic();
 
       setTimeout(() => {
         document.body.classList.remove("gift-locked");
@@ -920,27 +1006,60 @@
       }, 1050);
     });
 
-    // Pausar o reanudar la música
+    // Pausar o reanudar
     musicButton.addEventListener("click", () => {
       if (music.paused) {
-        music.play();
+        playMusic();
       } else {
         music.pause();
       }
     });
 
-    // Actualizar el símbolo del botón
+    // Canciones anterior y siguiente
+    prevButton.addEventListener("click", previousSong);
+    nextButton.addEventListener("click", nextSong);
+
+    // Actualizar botón al reproducir
     music.addEventListener("play", () => {
-      musicButton.textContent = "♫";
-      musicButton.classList.add("playing");
+      musicButton.textContent = "Ⅱ";
       musicButton.setAttribute("aria-label", "Pausar música");
     });
 
     music.addEventListener("pause", () => {
-      musicButton.textContent = "♪";
-      musicButton.classList.remove("playing");
+      musicButton.textContent = "▶";
       musicButton.setAttribute("aria-label", "Reproducir música");
     });
+
+    // Actualizar duración
+    music.addEventListener("loadedmetadata", () => {
+      durationText.textContent = formatTime(music.duration);
+    });
+
+    // Actualizar progreso
+    music.addEventListener("timeupdate", () => {
+      if (!Number.isFinite(music.duration)) return;
+
+      seekBar.value = (music.currentTime / music.duration) * 100;
+      currentTimeText.textContent = formatTime(music.currentTime);
+    });
+
+    // Saltar a otra parte de la canción
+    seekBar.addEventListener("input", () => {
+      if (Number.isFinite(music.duration)) {
+        music.currentTime = (seekBar.value / 100) * music.duration;
+      }
+    });
+
+    // Control de volumen
+    volumeBar.addEventListener("input", () => {
+      music.volume = Number(volumeBar.value);
+    });
+
+    // Pasar automáticamente a la siguiente canción
+    music.addEventListener("ended", nextSong);
+
+    // Preparar la primera canción
+    loadSong(0);
   </script>
 
 </body>
