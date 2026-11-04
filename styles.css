@@ -1051,11 +1051,3 @@ body.gift-opened #site-content {
     object-fit: contain !important;
     display: block;
 }
-
-/* MISMO ENCUADRE DE FOTOS QUE EN PC */
-#site-content .photo-card img {
-    width: 100% !important;
-    aspect-ratio: 4 / 5 !important;
-    height: auto !important;
-    object-fit: cover !important;
-}
