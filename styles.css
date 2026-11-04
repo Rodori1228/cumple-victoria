@@ -1033,3 +1033,24 @@ body.gift-opened #site-content {
         padding-right: 13px;
     }
 }
+
+/* FORZAR UNA SOLA FOTO POR FILA EN MÓVILES */
+@media screen and (max-width: 650px) {
+    #site-content .grid {
+        display: grid !important;
+        grid-template-columns: minmax(0, 1fr) !important;
+        width: 100% !important;
+    }
+
+    #site-content .grid .photo-card {
+        width: 100% !important;
+        max-width: 100% !important;
+        grid-column: 1 / -1 !important;
+    }
+
+    #site-content .grid .photo-card img {
+        width: 100% !important;
+        aspect-ratio: 4 / 3 !important;
+        object-fit: cover;
+    }
+}
