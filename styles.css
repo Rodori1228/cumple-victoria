@@ -1034,12 +1034,13 @@ body.gift-opened #site-content {
     }
 }
 
-/* FORZAR UNA SOLA FOTO POR FILA EN MÓVILES */
+/* FOTOS COMPLETAS EN MÓVILES */
 @media screen and (max-width: 650px) {
     #site-content .grid {
         display: grid !important;
         grid-template-columns: minmax(0, 1fr) !important;
         width: 100% !important;
+        gap: 20px;
     }
 
     #site-content .grid .photo-card {
@@ -1049,8 +1050,10 @@ body.gift-opened #site-content {
     }
 
     #site-content .grid .photo-card img {
+        display: block;
         width: 100% !important;
-        aspect-ratio: 4 / 3 !important;
-        object-fit: cover;
+        height: auto !important;
+        aspect-ratio: auto !important;
+        object-fit: contain !important;
     }
 }
