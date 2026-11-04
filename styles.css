@@ -1033,3 +1033,13 @@ body.gift-opened #site-content {
         padding-right: 13px;
     }
 }
+
+/* AJUSTE MANUAL DEL ZOOM EN MÓVILES */
+@media screen and (max-width: 650px) {
+    #site-content .photo-card img {
+        object-fit: cover !important;
+        object-position: center center !important;
+        transform: scale(1) !important;
+
+    }
+}
