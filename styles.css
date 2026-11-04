@@ -958,13 +958,19 @@ body.gift-opened #site-content {
 
     /* Galería de fotografías */
     .grid {
-        grid-template-columns: repeat(2, minmax(0, 1fr));
-        gap: 12px;
+        grid-template-columns: 1fr;
+        gap: 20px;
+    }
+
+    .photo-card img {
+        aspect-ratio: 4 / 3;
+        width: 100%;
+        object-fit: cover;
     }
 
     .photo-caption {
-        padding: 10px;
-        font-size: .85rem;
+        padding: 12px;
+        font-size: 1rem;
         line-height: 1.5;
     }
 
@@ -1011,10 +1017,6 @@ body.gift-opened #site-content {
 
 /* Móviles especialmente estrechos */
 @media (max-width: 380px) {
-
-    .grid {
-        grid-template-columns: 1fr;
-    }
 
     .photo-caption {
         font-size: .95rem;
