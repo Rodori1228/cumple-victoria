@@ -909,3 +909,119 @@ body.gift-opened #site-content {
         bottom: 18px;
     }
 }
+
+/* =================================
+   ADAPTACIÓN GENERAL PARA MÓVILES
+================================= */
+
+@media (max-width: 650px) {
+
+    /* Contenido principal */
+    main {
+        padding: 15px 16px 55px;
+        width: 100%;
+    }
+
+    section {
+        padding: 48px 0 15px;
+    }
+
+    /* Títulos */
+    h1 {
+        font-size: clamp(2.5rem, 11vw, 3.5rem);
+        line-height: 1.1;
+    }
+
+    h2 {
+        font-size: clamp(1.8rem, 7vw, 2.5rem);
+        line-height: 1.2;
+    }
+
+    .section-head {
+        margin-bottom: 24px;
+        padding: 0 5px;
+    }
+
+    .section-head p {
+        font-size: 1rem;
+    }
+
+    /* Tarjeta de bienvenida */
+    .intro-card {
+        padding: 20px;
+    }
+
+    .intro-card p {
+        font-size: 1rem;
+        line-height: 1.8;
+    }
+
+    /* Galería de fotografías */
+    .grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 12px;
+    }
+
+    .photo-caption {
+        padding: 10px;
+        font-size: .85rem;
+        line-height: 1.5;
+    }
+
+    /* Canciones */
+    .favorites {
+        grid-template-columns: 1fr;
+        gap: 15px;
+    }
+
+    .favorite {
+        padding: 20px;
+    }
+
+    .favorite h3 {
+        font-size: 1.4rem;
+    }
+
+    .list li {
+        font-size: .95rem;
+        padding: 12px 0;
+    }
+
+    /* Navegación */
+    .nav {
+        gap: 5px;
+        padding: 10px 8px;
+    }
+
+    .nav a {
+        font-size: .78rem;
+        padding: 7px 9px;
+    }
+
+    /* Carta */
+    .letter-wrap {
+        padding: 25px 20px;
+    }
+
+    .letter {
+        font-size: 1rem;
+        line-height: 1.8;
+    }
+}
+
+/* Móviles especialmente estrechos */
+@media (max-width: 380px) {
+
+    .grid {
+        grid-template-columns: 1fr;
+    }
+
+    .photo-caption {
+        font-size: .95rem;
+    }
+
+    main {
+        padding-left: 13px;
+        padding-right: 13px;
+    }
+}
